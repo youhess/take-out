@@ -127,4 +127,36 @@ public class EmployeeController {
 
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    @ApiOperation("查询员工信息")
+    public Result<Employee> employeeGetById (@PathVariable Integer id) {
+        // 不是json格式的 直接用employeePageQueryDto就可以了 springboot会自己安装好
+        log.info("查询id：{}", id);
+
+        Employee employee = employeeService.employeeGetById(id);
+
+        return Result.success(employee);
+
+    }
+
+    /**
+     *
+     */
+    @PutMapping
+    @ApiOperation("修改员工信息")
+    public Result employeeUpdate (@RequestBody EmployeeDTO employeeDTO) {
+        // requestbody 是json格式的数据
+        log.info("修改员工的信息：{}", employeeDTO);
+
+        employeeService.employeeUpdate(employeeDTO);
+
+        return Result.success();
+
+    }
+
 }

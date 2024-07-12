@@ -95,9 +95,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public PageResult employeePageQuery(EmployeePageQueryDTO employeePageQueryDTO) {
 
-       // select * from employee limit 0,10
+        // select * from employee limit 0,10
 // 开始分页查询
-        PageHelper.startPage(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
+        PageHelper.startPage(employeePageQueryDTO.getPage(), employeePageQueryDTO.getPageSize());
 
         Page<Employee> page = employeeMapper.empolyeePageQuery(employeePageQueryDTO);
 
@@ -105,7 +105,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         long total = page.getTotal();
         List<Employee> records = page.getResult();
 
-        return new PageResult(total,records);
+        return new PageResult(total, records);
     }
 
     @Override
@@ -114,6 +114,28 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = new Employee();
         employee.setStatus(status);
         employee.setId(id);
-        employeeMapper.empolyeeUpdate(employee);
+        employeeMapper.employeeUpdate(employee);
+    }
+
+    @Override
+    public Employee employeeGetById(Integer id) {
+        Employee employee = employeeMapper.employeeGetById(id);
+        //employee.setPassword("******");
+        return employee;
+    }
+
+
+    @Override
+    public void employeeUpdate(EmployeeDTO employeeDTO) {
+
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDTO,employee);
+
+        employee.setUpdateTime(LocalDateTime.now());
+        Long currentId = BaseContext.getCurrentId();
+
+        employee.setUpdateUser(currentId);
+
+        employeeMapper.employeeUpdate(employee);
     }
 }

@@ -35,5 +35,7 @@ public interface EmployeeMapper {
      */
     Page<Employee> empolyeePageQuery(EmployeePageQueryDTO employeePageQueryDTO);
 
-    void empolyeeUpdate(Employee employee);
+    void employeeUpdate(Employee employee);
+
+    Employee employeeGetById(Integer id);
 }
