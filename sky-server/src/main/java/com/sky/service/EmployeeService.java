@@ -24,4 +24,12 @@ public interface EmployeeService {
     void addEmployee(EmployeeDTO employeeDTO);
 
     PageResult employeePageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+    /**
+     *
+     * @param status
+     * @param id
+     */
+
+    void employeeStatus(Integer status, long id);
 }

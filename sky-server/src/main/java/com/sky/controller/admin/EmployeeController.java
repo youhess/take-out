@@ -110,5 +110,21 @@ public class EmployeeController {
 
     }
 
+    /**
+     * 启用 和 禁用
+     *
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用和禁用")
+    public Result employeeStatus(@PathVariable Integer status, long id) {
+        // 不是json格式的 直接用employeePageQueryDto就可以了 springboot会自己安装好
+        log.info("启用参数：{},{}", status,id);
+
+        employeeService.employeeStatus(status,id);
+
+        return Result.success();
+
+    }
 
 }
