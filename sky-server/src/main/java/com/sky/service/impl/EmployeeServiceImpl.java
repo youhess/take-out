@@ -77,17 +77,17 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setStatus(StatusConstant.ENABLE);
 
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
-        //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-        //  private LocalDateTime createTime;
-        employee.setCreateTime(LocalDateTime.now());
-        //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-        //private LocalDateTime updateTime;
-        employee.setUpdateTime(LocalDateTime.now());
-        Long currentId = BaseContext.getCurrentId();
-        //private Long createUser;
-        employee.setCreateUser(currentId);
-        //private Long updateUser;
-        employee.setUpdateUser(currentId);
+//        //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//        //  private LocalDateTime createTime;
+//        employee.setCreateTime(LocalDateTime.now());
+//        //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//        //private LocalDateTime updateTime;
+//        employee.setUpdateTime(LocalDateTime.now());
+//        Long currentId = BaseContext.getCurrentId();
+//        //private Long createUser;
+//        employee.setCreateUser(currentId);
+//        //private Long updateUser;
+//        employee.setUpdateUser(currentId);
 
         employeeMapper.addEmployee(employee);
     }
@@ -131,10 +131,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO,employee);
 
-        employee.setUpdateTime(LocalDateTime.now());
-        Long currentId = BaseContext.getCurrentId();
-
-        employee.setUpdateUser(currentId);
+//        employee.setUpdateTime(LocalDateTime.now());
+//        Long currentId = BaseContext.getCurrentId();
+//
+//        employee.setUpdateUser(currentId);
 
         employeeMapper.employeeUpdate(employee);
     }

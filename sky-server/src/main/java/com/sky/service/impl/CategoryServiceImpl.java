@@ -51,10 +51,10 @@ public class CategoryServiceImpl implements CategoryService {
 
         // 默认禁止
         category.setStatus(0);
-        category.setCreateTime(LocalDateTime.now());
-        category.setCreateUser(BaseContext.getCurrentId());
-        category.setUpdateTime(LocalDateTime.now());
-        category.setUpdateUser(BaseContext.getCurrentId());
+//        category.setCreateTime(LocalDateTime.now());
+//        category.setCreateUser(BaseContext.getCurrentId());
+//        category.setUpdateTime(LocalDateTime.now());
+//        category.setUpdateUser(BaseContext.getCurrentId());
 
         categoryMapper.addCategory(category);
     }
@@ -65,8 +65,9 @@ public class CategoryServiceImpl implements CategoryService {
                 .builder()
                 .status(status)
                 .id(id)
-                .updateTime(LocalDateTime.now())
-                .updateUser(BaseContext.getCurrentId()).build();
+//                .updateTime(LocalDateTime.now())
+//                .updateUser(BaseContext.getCurrentId())
+                .build();
 
         categoryMapper.updateCategory(category);
 
